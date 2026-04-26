@@ -1,0 +1,275 @@
+<div class="body">
+  <div class="modal-background"></div>
+
+  <div class="wishlist">
+    <div class="header">
+      <h3>Wish List</h3>
+      <button type="button" class="close-button" (click)="closeWishlist()">
+        <img src="close.svg" alt="close button" />
+      </button>
+    </div>
+    <div class="wishlist-content">
+      <div class="content-product">
+        <div class="content-product-image"></div>
+        <div class="content-product-details">
+          <div class="content-product-name">Expensive Body Cream</div>
+          <div class="content-product-price-and-button">
+            <div class="content-product-price-and-stock-container">
+              <div class="content-product-price">
+                ₦ <span class="content-product-actual-price">5,000</span>
+              </div>
+              <div class="content-product-stock-value">In stock</div>
+            </div>
+            <div class="content-delete-product-button-container">
+              <button type="button" class="reduce-number-of-item">-</button>
+              <button type="button" class="number-of-item" disabled>1</button>
+              <button type="button" class="increase-number-of-item">+</button>
+              <button type="button" class="delete-product-button">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <div class="header">
+      <h3>Cart</h3>
+      <button type="button" class="close-button" (click)="closeCart()">
+        <img src="close.svg" alt="close button" />
+      </button>
+    </div>
+
+    <div class="cart-content">
+      @for (item of cart; track item._id) {
+      <div class="content-product">
+        <div
+          class="content-product-image"
+          style="background-image: url('{{ item.productImage }}')"
+        ></div>
+        <div class="content-product-details">
+          <div class="content-product-name">{{ item.productName }}</div>
+          <div class="content-product-price-and-button">
+            <div class="content-product-price-and-stock-container">
+              <div class="content-product-price">
+                ₦
+                <span class="content-product-actual-price"
+                  >{{ item.productPrice }}</span
+                >
+              </div>
+              <div class="content-product-stock-value"></div>
+            </div>
+            <div class="content-delete-product-button-container">
+              <button type="button" class="reduce-number-of-item">-</button>
+              <button type="button" class="number-of-item" disabled>
+                {{ item.numOfItem }}
+              </button>
+              <button type="button" class="increase-number-of-item">+</button>
+              <button
+                type="button"
+                class="delete-product-button"
+                (click)="deleteProductFromCart(item)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="menu">
+    <div class="header">
+      <h3>Esfam Market</h3>
+      <button type="button" class="close-button" (click)="closeMenu()">
+        <img src="close.svg" alt="close button" />
+      </button>
+    </div>
+    <div class="menu-content">
+      <ul>
+        <li class="not-drop-down" routerLink="" (click)="closeMenu()">
+          <img src="home.svg" alt="home icon" />
+          <p>Home</p>
+        </li>
+        <li (click)="openMenuDropDown()" class="no-padding">
+          <div class="shop-menu">
+            <div>
+              <img src="shop.svg" alt="shop icon" />
+              <p>Shop</p>
+            </div>
+
+            <ul class="menu-drop-down">
+              <li
+                class="not-drop-down"
+                routerLink="/fashion"
+                (click)="closeMenu()"
+              >
+                <p>Fashion</p>
+              </li>
+              <li
+                class="not-drop-down"
+                routerLink="/electronic"
+                (click)="closeMenu()"
+              >
+                <p>Electronic</p>
+              </li>
+              <li
+                class="not-drop-down"
+                routerLink="/edible"
+                (click)="closeMenu()"
+              >
+                <p>Edible</p>
+              </li>
+              <li
+                class="not-drop-down"
+                routerLink="/school-accessory"
+                (click)="closeMenu()"
+              >
+                <p>School Accessories</p>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="not-drop-down" routerLink="/market" (click)="closeMenu()">
+          <img src="store.svg" alt="store icon" />
+          <p>Market</p>
+        </li>
+        <li class="not-drop-down" routerLink="/blog" (click)="closeMenu()">
+          <img src="blog.svg" alt="blog icon" />
+          <p>Blog</p>
+        </li>
+        <li class="not-drop-down" routerLink="/about" (click)="closeMenu()">
+          <img src="about.svg" alt="about icon" />
+          <p>About</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <header>
+    <button type="button" class="menu-button" (click)="openMenu()">
+      <img src="menu.svg" alt="menu button" width="25px" />
+    </button>
+
+    <div class="app-name">
+      <h1 routerLink="">{{ title }}</h1>
+    </div>
+
+    <nav>
+      <div class="drop-down">
+        <div class="dropdown-display" (click)="openDropDown()">
+          <div class="para"><p>Shop</p></div>
+
+          <div class="icon">
+            <img src="arrow.svg" alt="arrow icon" width="15px" />
+          </div>
+        </div>
+
+        <div class="dropdown-content">
+          <ul>
+            <li routerLink="/fashion">Fashion</li>
+            <li routerLink="/electronic">Electronic</li>
+            <li routerLink="/edible">Edible</li>
+            <li routerLink="school-accessory">School Material</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <ul>
+          <li routerLink="/market">Market</li>
+          <li routerLink="/about">About</li>
+          <li routerLink="/blog">Blog</li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="header-buttons">
+      <div class="sell-button" [routerLink]="sell ? 'sell' : 'seller-register'">
+        <p>Sell</p>
+      </div>
+
+      <button type="button" (click)="openThemeMenu()">
+        <img src="theme.svg" alt="theme icon" width="20px" />
+
+        <div class="theme-container">
+          <ul>
+            <li class="light-theme" (click)="lightTheme()">
+              <div class="light-icon">
+                <img src="light.svg" alt="account icon" width="20px" />
+              </div>
+              Light
+            </li>
+            <li class="dark-theme" (click)="darkTheme()">
+              <div class="dark-icon">
+                <img src="dark.svg" alt="account icon" width="20px" />
+              </div>
+              Dark
+            </li>
+            <li class="auto-theme" (click)="autoTheme()">
+              <div class="auto-icon">
+                <img src="auto.svg" alt="auto icon" width="20px" />
+              </div>
+              Auto
+            </li>
+          </ul>
+        </div>
+      </button>
+
+      <button type="button" (click)="openWishlist()">
+        <img src="wishlist.svg" alt="theme icon" width="20px" />
+      </button>
+
+      <button type="button" class="cart-button" (click)="openCart()">
+        <img src="cart.svg" alt="theme icon" width="20px" />
+        <div class="cart-count">0</div>
+      </button>
+
+      <button type="button" (click)="openAccountMenu()">
+        <img src="account.svg" alt="theme icon" width="20px" />
+
+        <div class="account-container">
+          <ul>
+            <li>
+              <div class="account-icon">
+                <img src="create-account.svg" alt="account icon" width="20px" />
+              </div>
+              <div class="determine" (click)="login()">Login</div>
+            </li>
+
+            <li [routerLink]="sell ? 'sell' : 'seller-register'">
+              <div class="sell-icon">
+                <img src="sell.svg" alt="account icon" width="20px" />
+              </div>
+              <div>Sell</div>
+            </li>
+
+            <li routerLink="setting">
+              <div class="setting-icon">
+                <img src="setting.svg" alt="account icon" width="20px" />
+              </div>
+              <div>Setting</div>
+            </li>
+          </ul>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <p>&copy;All rights reserved. | Esfam Market 2025</p>
+    <span><p (click)="isAdmin()">Admin Panel</p></span>
+    <p>
+      This site uses cookies to store essential user session data. We do not use
+      tracking or third-party cookies.
+    </p>
+  </footer>
+</div>

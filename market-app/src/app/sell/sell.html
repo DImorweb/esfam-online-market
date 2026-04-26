@@ -1,0 +1,206 @@
+<div class="body">
+  <section class="sell-section">
+    <div class="sell-write-up">
+      <h2>Product Upload Portal</h2>
+      <p>
+        Effortlessly add your products to Esfam Market in just a few simple
+        steps.
+      </p>
+      <button
+        type="button"
+        class="start-uploading other-button"
+        (click)="startUpload()"
+      >
+        Begin Upload
+      </button>
+    </div>
+
+    <div class="upload-form">
+      <div class="header">
+        <h3>Please complete the form accurately</h3>
+        <button
+          type="button"
+          class="close-button"
+          title="stop uploading"
+          (click)="stopUpload()"
+        >
+          <img src="close.svg" alt="close icon" />
+        </button>
+      </div>
+
+      <div class="upload-content">
+        <div class="content">
+          <form class="name" (submit)="description($event)">
+            <label for="product-name"> Product Name </label>
+            <input
+              type="text"
+              id="product-name"
+              name="product-name"
+              maxlength="50"
+              placeholder="Enter product name"
+              required
+            />
+            <button type="submit" class="submit-button submit-name">
+              Submit
+            </button>
+          </form>
+
+          <form class="description" (submit)="priceStock($event)">
+            <label for="product-description"> Product Description </label>
+            <textarea
+              name="product-description"
+              id="product-description"
+              disabled
+              placeholder="Enter product description"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              class="submit-button submit-description"
+              disabled
+            >
+              Submit
+            </button>
+          </form>
+
+          <form class="price-stock" (submit)="category($event)">
+            <div class="product-price">
+              <label for="product-price">Product Price</label>
+              <input
+                type="number"
+                name="product-price"
+                id="product-price"
+                required
+                placeholder="Enter product price"
+                disabled
+              />
+            </div>
+
+            <div class="product-stock">
+              <label for="product-stock">Product Stock</label>
+              <input
+                type="number"
+                name="product-stock"
+                id="product-stock"
+                required
+                placeholder="Enter stock value"
+                disabled
+              />
+            </div>
+            <button type="submit" class="submit-price-stock" disabled>
+              Submit
+            </button>
+          </form>
+
+          <form (submit)="images($event)">
+            <label for="product-category">Product Category</label>
+            <select name="categories" id="categories" disabled>
+              <option value="fashion">Fashion</option>
+              <option value="electronic">Electronic</option>
+              <option value="edible">Edible</option>
+              <option value="school-material">School Material</option>
+            </select>
+
+            <label for="gender">For</label>
+            <select name="gender" id="gender" disabled>
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="both">Both</option>
+            </select>
+
+            <button type="submit" class="submit-category" disabled>
+              Submit
+            </button>
+          </form>
+
+          <form (submit)="submitImage($event)">
+            <label for="primaryImage">Primary Image</label>
+            <input
+              (change)="changePrimaryImage($event)"
+              type="file"
+              name="primaryImage"
+              id="primaryImage"
+              accept="image/.jpeg, .jpg, .png, .webp"
+              required
+              disabled
+            />
+            <label for="secondaryImage">Secondary Image</label>
+            <input
+              (change)="changeSecondaryImage($event)"
+              type="file"
+              name="secondaryImage"
+              id="secondaryImage"
+              accept="image/.jpeg, .jpg, .png, .webp"
+              required
+              disabled
+            />
+            <label for="thirdImage">Third Image</label>
+            <input
+              (change)="changeThirdImage($event)"
+              type="file"
+              name="thirdImage"
+              id="thirdImage"
+              accept="image/.jpeg, .jpg, .png, .webp"
+              required
+              disabled
+            />
+            <button type="submit" class="submit-image" disabled>Submit</button>
+          </form>
+        </div>
+
+        <div class="preview">
+          <h3>Preview</h3>
+
+          <div class="preview-container">
+            <p>What will be visible</p>
+
+            <div class="preview-product">
+              <div class="preview-product-image primary-image"></div>
+              <div class="preview-product-details">
+                <div class="preiew-product-name"></div>
+                <div class="preview-product-price">
+                  ₦ <span class="pri"></span>
+                </div>
+                <div class="preview-product-stock">
+                  <span class="sto"></span>
+                </div>
+              </div>
+            </div>
+
+            <p>What will not be visible</p>
+
+            <div class="product-information">
+              <div class="preview-product-image secondary-image"></div>
+              <p>Secondary Image</p>
+              <div class="preview-product-image third-image"></div>
+              <p>Third Image</p>
+            </div>
+
+            <div class="preview-product-description">
+              <h4>Description</h4>
+
+              <p class="desc"></p>
+            </div>
+
+            <div class="preview-product-category">
+              <h4>Category</h4>
+
+              <p class="cat"></p>
+              <p class="fo"></p>
+            </div>
+
+            <button
+              type="button"
+              class="upload-finished-product"
+              (click)="uploadProduct()"
+              disabled
+              title="Submit all forms first"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

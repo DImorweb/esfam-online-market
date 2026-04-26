@@ -1,0 +1,11 @@
+.about-section {
+  background: url("https://res.cloudinary.com/dqmfnubj5/image/upload/v1751992830/products/1751992824081-welcome.jpg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5rem;
+}
